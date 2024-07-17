@@ -1,0 +1,730 @@
+
+/* This file was built with https://gist.github.com/killercup/5917178 as a basis and then customized by me */
+
+:root {
+  --background-gradient: radial-gradient(at center, #CBCBCB, #FFFFFF);
+  --blockquote-font-family: 'Source Sans Pro';
+/*  --box-shadow: 0px 0px 9px rgba(0,0,0,0.5);*/
+  --color-a: #0645ad;
+  --color-a-visited: #0b0080;
+  --color-a-hover: #06e;
+  --color-background-code-block: #f5f5f5;
+  --color-selection-background: hsl(0, 78.873%, 80.157%);
+  --color-blockquote-background: #fefefe;
+  --color-blockquote-border:#ccc;
+  --color-blockquote:#777777;
+  --color-body-background: #fefefe;
+  --color-body-font: #300;
+  --color-code-background: #f0f0f0;
+  --color-code-border:lightgray;
+/*  --color-code-font: crimson;*/
+/*  --color-code-font: hsl(22, 79%, 41%); Pris du color scheme sublime*/
+  --color-code-font: hsl(18, 85%, 45%);
+  --color-headings: #111;
+  --color-label: black;
+  --color-li-card-background-hover: rgba(255,255,255,0.8); /* for very white ones */
+  --color-li-card-background: rgba(255,255,255,0.6); /* for very white ones */
+/*  --color-li-card-background-hover: rgba(255,255,255,0.6);*/ /* for very white ones */
+  /*--color-li-card-background: rgba(255,255,255,0.3); *//* for very white ones */
+  --color-nav-background: whitesmoke;
+  --color-nav-button: rgba(47.813, 47.813, 47.813, 0.5);
+  --color-title-font: rgb(112, 112, 112);
+  --font-family-code: 'Reddit Mono Medium', 'Jetbrains Mono', 'Cascadia Code', SFMono-Medium, "SF Mono", "Segoe UI Mono", "Roboto Mono", "Ubuntu Mono", Menlo, Consolas, Courier, monospace, monospace;
+  --font-family-codeish: 'iA Writer Quattro s', sans-serif;
+  --font-family-content: 'Reddit Sans', 'Inter', 'Lexend', 'arial', sans-serif;
+  --font-family-fancy: 'Calistoga','Source Serif Pro','Playfair Display', 'Gentium', serif;
+  --line-height-body: 1.5; /* 1.5 goes with Lexend. Maybe normal for the rest */
+/*  --font-family-content: 'Lexend Light', 'Inter', 'arial', sans-serif;*/
+/*  --font-family-fancy: 'Source Serif Pro','Calistoga','Playfair Display', 'Gentium', serif;*/
+}
+
+@media (prefers-color-scheme: dark) {
+  /* defaults to dark theme */
+  :root {
+
+    /* Default dark */
+    --background-gradient: radial-gradient(at center, #505050, #000);
+/*    --box-shadow: 0px 0px 9px rgba(0,0,0,0.5);*/
+    --color-a: #06e;;
+    --color-a-visited: hsl(245.16, 100%, 70.098%);
+    --color-a-hover: hsl(214.29, 100%, 60.667%);
+    --color-background-code-block: #303030;
+    --color-selection-background: hsl(0, 78.873%, 20.157%);
+    --color-blockquote-background: #202020;
+    --color-blockquote-border:#ccc;
+    --color-blockquote:#939393;
+    --color-body-background: #202020;
+    --color-body-font: #E0E0E0;
+    --color-code-background: calc(var(--color-body-background)+rgb(10,10,10));
+    --color-code-border:#999;
+    --color-code-font: crimson;
+    --color-headings: #ffffff;
+    --color-label: white;
+    --color-li-card-background-hover: rgba(5,5,5,0.6);
+    --color-li-card-background: rgba(5,5,5,0.3);
+    --color-nav-background: hsl(212, 15%, 30%);
+    --color-nav-button: #ccc;
+    --color-title-font: rgb(200, 200, 200);
+
+    /* spacedust style */
+    --background-gradient: radial-gradient(at center, hsl(194, 57%, 9%), hsl(194, 57%, 3%));
+/*    --box-shadow: 0px 0px 9px rgba(0,0,0,0.5);*/
+    --color-a: hsl(188, 92%, 41%);
+    --color-a-hover: hsl(188, 92%, 61%);
+    --color-a-visited: hsl(188, 94%, 30%);
+    --color-background-code-block: #303030;
+    --color-selection-background: hsl(0, 78.873%, 20.157%);
+    --color-blockquote-background: #202020;
+    --color-blockquote-border:#ccc;
+    --color-blockquote:#939393;
+    --color-body-background: hsl(212, 15%, 14%);
+    --color-body-font: #E0E0E0;
+    --color-code-background: calc(var(--color-body-background)+rgb(10,10,10));
+    --color-code-border:#999;
+    --color-code-font: hsl(23, 93%, 43%);
+    --color-headings: hsl(47, 65%, 69%);
+    --color-label: white;
+    --color-li-card-background-hover: rgba(5,5,5,0.6);
+    --color-li-card-background: rgba(5,5,5,0.3);
+    --color-nav-background: hsl(212, 15%, 30%);
+    --color-nav-button: #ccc;
+    --color-title-font: rgb(200, 200, 200);
+  }
+}
+
+html {
+  font-size: 100%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+/*  background: var(--background-gradient);*/
+
+}
+body {
+/*  backdrop-filter: blur(3px);*/
+  color: var(--color-body-font);
+/*  font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;*/
+  font-family: var(--font-family-content);
+  font-size: 14px;
+  line-height: var(--line-height-body);
+  padding-top: 1em;
+  padding-left: 4em;
+  padding-right: 4em;
+  padding-bottom: 1em;
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  max-width: 57em;
+/*  background: white;*/
+  background: var(--color-body-background);
+/*  box-shadow: var(--box-shadow);*/
+/*  border: 1px solid #909090;*/
+  border-radius: 3px;
+}
+
+@media only screen and (max-width: 57em) {
+/*@media only screen and (max-width: 768px) {*/
+  body {
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+}
+@media only screen and (max-width: 30em) {
+  body {
+    font-size: 11px;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+}
+
+/* Pandoc crée avec --title="...", qu'il y ait un `# titre` au début ou pas :
+
+<header id="title-block-header">
+<h1 class="title">Liste des offres Product</h1>
+</header>
+
+À savoir : utiliser --pagetitle="..." pour avoir juste le titre de la fenêtre sans avoir le header h1
+
+*/
+
+header#title-block-header h1.title
+{
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.2em;
+  text-align: left;
+  font-variant: normal;
+  color: var(--color-title-font);
+  font-family: var(--font-family-codeish);
+}
+
+a {
+  color: var(--color-a);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--color-a-visited);
+}
+
+a:hover {
+  color: var(--color-a-hover);
+  text-decoration: underline;
+}
+
+a:active {
+  color: #faa700;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+*::-moz-selection {
+  background: var(--color-selection-background);
+}
+
+*::selection {
+  background: var(--color-selection-background);
+}
+
+a::-moz-selection {
+  background: var(--color-selection-background);
+  color: #0645ad;
+}
+
+a::selection {
+  background: var(--color-selection-background);
+  color: #0645ad;
+}
+
+p {
+/*  margin: 1em 0;*/
+  margin-top: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p,
+blockquote>p:nth-child(1) {
+/*  margin: 1em 0;*/
+  margin-top: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-headings);
+  line-height: 125%;
+  margin-top: 1em;
+  font-weight: normal;
+}
+
+
+h1, h2, h3 {
+  /* font-variant: small-caps; */
+  font-family: var(--font-family-fancy);
+/*  font-weight: bold;*/
+}
+
+h4, h5, h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: .8em;
+
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: .7em;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: .6em;
+}
+
+h4 {
+  font-size: 1.2em;
+  margin-bottom: .2em;
+}
+
+h5 {
+  font-size: 1em;
+  margin-bottom: .1em;
+}
+
+h6 {
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+
+blockquote {
+  color: var(--color-blockquote);
+  font-family: var(--blockquote-font-family);
+/*  font-family:'Source Sans Pro';*/
+  margin: 0;
+  padding-left: 1.5em;
+  padding-right: 1em;
+  padding-top: .7em;
+  padding-bottom: .7em;
+/*  border-left: 0.5em var(--color-blockquote-border) solid; original*/
+  border-left: 0.3em var(--color-blockquote-border) solid;
+  border-right: 1px var(--color-blockquote-border) dashed;
+  border-top: 1px var(--color-blockquote-border) dashed;
+  border-bottom: 1px var(--color-blockquote-border) dashed;
+  background-color: var(--color-blockquote-background);
+  font-size: .9em;
+  border-radius: 5px;
+}
+
+hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid var(--color-blockquote-border);
+  margin-top: 3em;
+  margin-bottom: 1.5em;
+  padding: 0;
+  width: 100%;
+}
+/*** <10> Code display ***/
+
+/* There a 3 types of code:
+
+- Inline code: <code>
+- Code block without syntax: <pre><code></code></pre> (just one <code>)
+- Code block with syntax: 
+<div class="sourceCode">
+  <pre>
+    <code>
+      <span>line1</span>
+      <span>line2</span>
+    </code>
+  </pre>
+</div>
+
+=> Inline, give the padding and borders to <code> only
+=> When relevant, give the padding and borders to <pre> and none to <code> or div
+
+*/
+
+pre, code, kbd, samp, div.sourceCode {
+  background-color: var(--color-background-code-block);
+  border-radius: 3px;
+  color: var(--color-code-font);
+  font-family: var(--font-family-code);
+  font-size: 1em;
+}
+code {
+  margin: 0;
+  border-radius: 3px;
+  padding: 0 .2em 0 .2em;
+  border: var(--color-code-border) 1px solid;
+}
+pre {
+  code {
+    padding: 0;
+    border-width: 0;
+  }
+  border: var(--color-code-border) 1px solid;
+  margin-top: .4em;
+  margin: 0;
+  max-height: 24em;
+  overflow: auto;
+  padding-bottom: .4em;
+  padding-left: .7em;
+  padding-right: .7em;
+  padding-top: .4em;
+  white-space: pre-wrap;
+  white-space: pre;
+}
+pre * {
+  text-wrap: wrap;
+}
+
+div.sourceCode {
+  margin: 0;
+  border-radius: 3px;
+  padding: 0;
+}
+
+
+/*** </10> ***/
+
+
+b, strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+ul, ol {
+  margin: 1em 0;
+  padding: 0 0 0 2em;
+}
+
+li p:last-child {
+  margin-bottom: 0;
+}
+
+li p {
+  margin: 0;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  /* margin: .3em 0;*/ /* .3 => 0 because it's ugly for ul in uls in ast.org.process.PrepareSprint… 2023-12-28 10:36 */
+  margin: 0;
+}
+
+dl {
+  margin-bottom: 1em;
+}
+
+dt {
+  font-weight: bold;
+  margin-bottom: .8em;
+}
+
+dd {
+  margin: 0 0 .8em 2em;
+}
+
+dd:last-child {
+  margin-bottom: 0;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+details {
+  font-size: 0.8em;
+  border-radius: 10px;
+  background-color: var(--color-code-background);
+  padding: 0 0 0 1.6em;
+
+  summary {
+/*    padding: 0 0 0 .8em;*/
+    font-size: 1em;
+    background-color: red;
+    border-radius: 10px;
+    background-color: var(--color-code-background);
+  }
+
+
+/*  p, ul, ol, table {
+    margin-left: 2em;
+  }
+*/
+  summary:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+}
+
+figure {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+figure img {
+  border: none;
+  margin: 0 auto;
+}
+
+figcaption {
+  font-size: 0.8em;
+  font-style: italic;
+  margin: 0 0 .8em;
+}
+
+table {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  border: 1px solid #ddd;
+  border-spacing: 0;
+  border-collapse: collapse;
+/*  margin-left: 10.1%;*/
+/*  margin-right:20%;*/
+  max-width:90%;
+  font-size:0.9em;
+}
+
+table th {
+  padding: .2em 1em;
+  background-color: var(--color-blockquote-border);
+  border: 1px solid #ddd;
+}
+
+table td {
+  padding: .2em 1em;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.author {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/********************/
+/* <1> Tricky stuff */
+/********************/
+
+
+  /*** <1.4> Todo txt style with separating items, like in todo.planned.md ***/
+
+ul.task-list > li:has( span.separating-item)  {
+  margin-top:1em;
+  margin-bottom:0.75em;
+  color: transparent;
+}
+ul.task-list li label input:has(~span.separating-item){
+  visibility: hidden;
+}
+span.separating-item {
+  color: black;
+  float: left;
+  font-family: var(--font-family-fancy);
+  font-size: 1.1em;
+  margin-left: -1em;
+}
+span.visible{
+  color: black;
+}
+  /*** </1.4> ***/
+
+  /*** <1.3> Collapsing ULs logic with checkboxes ***/
+ul.task-list > li > label:has(> input[type="checkbox"]:checked) ~ ul  {
+  display: none;
+}
+  /*** </1.3> ***/
+
+  /*** <1.1> Nice little labels ***/
+
+code.label, code.la {
+  font-family: var(--font-family-codeish);
+  color: var(--color-label);
+  font-weight: bold;
+  border: solid 1px;
+  border-color: lightgrey;
+  font-size: .8em;
+}
+code.label-g {
+  font-family: var(--font-family-codeish);
+  color: mediumseagreen;
+  font-weight: bold;
+  border: solid 1px;
+  font-size: .8em;
+}
+code.label-v {
+  font-family: var(--font-family-codeish);
+  color: blueviolet;
+  font-weight: bold;
+  border: solid 1px;
+  font-size: .8em;
+}
+code.label-b {
+  font-family: var(--font-family-codeish);
+  color: dodgerblue;
+  font-weight: bold;
+  border: solid 1px;
+  font-size: .8em;
+}
+code.label-r {
+  font-family: var(--font-family-codeish);
+  color: crimson;
+  font-weight: bold;
+  border: solid 1px;
+  font-size: .8em;
+}
+code.label-p {
+  font-family: var(--font-family-codeish);
+  color: pink;
+  font-weight: bold;
+  border: solid 1px;
+  font-size: .8em;
+}
+  /*** </1.1> ***/
+
+
+  /*** <1.2> For new-tab page ***/
+h1 div.lis-in-uls-as-cards > ul,
+h2 div.lis-in-uls-as-cards > ul,
+h3 div.lis-in-uls-as-cards > ul,
+h4 div.lis-in-uls-as-cards > ul,
+{
+  margin-top: 0;
+}
+
+div.lis-in-uls-as-cards {
+
+  --icon-space-width: 30px;
+  --padding-horizontal-anchor: 1em;
+  --padding-vertical-anchor: 1em;
+  --width-card: 17em;
+
+  ul {
+    columns: 15em;
+  }
+
+  ul > li {
+    background-color: var(--color-li-card-background);
+/*    border-color: rgba(255,255,255,0.2);*/
+    border-radius: 4px;
+    border-style: none;
+    border-width: 1px;
+    backdrop-filter: blur(7px);
+/*    box-shadow: 0px 0px 2px rgba(0,0,0,0.5);*/
+    display: block;
+    margin-bottom: 1em;
+    text-align: left;
+    width: var(--width-card);
+  }
+
+
+  ul > li:hover, ul > li:active {
+    background-color: var(--color-li-card-background-hover);
+  }
+
+  ul > li > a {
+    display: block;
+    width: calc(var(--width-card) - 2*var(--padding-horizontal-anchor)); /* for some reason, width does not count padding */
+    text-decoration: none;
+    padding: var(--padding-vertical-anchor) var(--padding-horizontal-anchor);
+    color: var(--color-body-font);
+  }
+  ul > li > a:focus {
+    outline: none;
+  }
+
+  ul > li > a > span.i{
+    display: inline-block;
+    width: var(--icon-space-width);
+  }
+
+}
+  /*** </1.2>  ***/
+
+
+/* </1> *************/
+
+
+@media print {
+  * {
+    background: transparent !important;
+/*    color: black !important;*/
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  body {
+    color: black;
+    font-size: 8pt;
+    max-width: 100%;
+    border: none;
+  }
+
+  a, a:visited {
+    text-decoration: underline;
+  }
+
+  hr {
+    height: 1px;
+    border: 0;
+    border-bottom: 1px solid black;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+
+  code { /* code = inline code */
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+  }
+
+  pre, blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  tr, img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page :left {
+/*    margin: 15mm 20mm 15mm 10mm; /*before my modification*/*/
+    margin: 15mm 0 15mm 10mm;
+  }
+
+  @page :right {
+    margin: 15mm 10mm 15mm 20mm;
+  }
+
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
